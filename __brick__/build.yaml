@@ -1,0 +1,11 @@
+targets:
+  $default:
+    builders:
+      auto_route_generator:auto_route_generator:
+        options:
+          replace_in_route_name: Screen,Route
+          generate_for_dir: [lib/features]
+      # auto_route_generator:auto_route_guard_generator:
+      #   options:
+      #     replace_in_route_name: Screen,Route
+      #     generate_for_dir: [lib/features]
