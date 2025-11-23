@@ -24,14 +24,13 @@ This brick generates a Flutter project with the following features:
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `auto_route` | ^10.1.2 | Type-safe routing and navigation |
-| `bloc` | ^9.0.0 | State management core |
+| `auto_route` | ^10.2.3 | Type-safe routing and navigation |
 | `bloc_concurrency` | ^0.3.0 | BLoC concurrency utilities |
-| `collection` | ^1.18.0 | Collection utilities |
+| `collection` | ^1.19.1 | Collection utilities |
 | `flutter_bloc` | ^9.1.1 | Flutter widgets for BLoC |
 | `hydrated_bloc` | ^10.1.1 | Persistent state management |
-| `get_it` | ^8.2.0 | Dependency injection service locator |
-| `injectable` | ^2.5.2 | Dependency injection annotations |
+| `get_it` | ^9.1.0 | Dependency injection service locator |
+| `injectable` | ^2.6.0 | Dependency injection annotations |
 | `freezed_annotation` | ^3.1.0 | Immutable data classes |
 | `json_annotation` | ^4.9.0 | JSON serialization annotations |
 
@@ -39,10 +38,10 @@ This brick generates a Flutter project with the following features:
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `google_fonts` | ^6.2.1 | Google Fonts integration |
-| `flutter_svg` | ^2.2.1 | SVG rendering support |
+| `google_fonts` | ^6.3.2 | Google Fonts integration |
+| `flutter_svg` | ^2.2.3 | SVG rendering support |
 | `cached_network_image` | ^3.4.1 | Network image caching |
-| `flutter_launcher_icons` | ^0.14.3 | App icon generation |
+| `flutter_launcher_icons` | ^0.14.4 | App icon generation |
 | `flutter_localizations` | SDK | Flutter localization support |
 | `flutter_web_plugins` | SDK | Flutter web plugin support |
 
@@ -58,27 +57,27 @@ This brick generates a Flutter project with the following features:
 | Package | Version | Purpose |
 |---------|---------|---------|
 | `package_info_plus` | ^9.0.0 | App package information |
-| `connectivity_plus` | ^6.0.0 | Network connectivity monitoring |
-| `image_picker` | ^1.2.0 | Image selection from gallery/camera |
-| `permission_handler` | ^12.0.0+1 | Permission management |
-| `uuid` | ^4.5.1 | Unique identifier generation |
-| `logging` | ^1.2.0 | Structured logging |
+| `connectivity_plus` | ^7.0.0 | Network connectivity monitoring |
+| `image_picker` | ^1.2.1 | Image selection from gallery/camera |
+| `permission_handler` | ^12.0.1 | Permission management |
+| `uuid` | ^4.5.2 | Unique identifier generation |
+| `logging` | ^1.3.0 | Structured logging |
 | `intl` | ^0.20.2 | Internationalization |
 
 ### Development Dependencies
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `auto_route_generator` | ^10.2.4 | Auto route code generation |
-| `build_runner` | ^2.7.1 | Code generation runner |
-| `freezed` | ^3.2.1 | Freezed code generation |
-| `injectable_generator` | ^2.8.1 | Injectable code generation |
-| `json_serializable` | ^6.11.1 | JSON serialization code generation |
+| `auto_route_generator` | ^10.2.6 | Auto route code generation |
+| `build_runner` | ^2.10.4 | Code generation runner |
+| `freezed` | ^3.2.3 | Freezed code generation |
+| `injectable_generator` | ^2.9.1 | Injectable code generation |
+| `json_serializable` | ^6.11.2 | JSON serialization code generation |
 | `flutter_gen_runner` | ^5.12.0 | Asset code generation |
 | `arb_utils` | ^0.1.0+1 | ARB file utilities |
 | `auto_translator` | ^2.3.5 | Automatic translation |
 | `flutter_lints` | ^6.0.0 | Flutter linting rules |
-| `analyzer` | ^7.7.1 | Dart analyzer |
+| `analyzer` | ^8.0.0 | Dart analyzer |
 
 ## 🚀 Getting Started
 
