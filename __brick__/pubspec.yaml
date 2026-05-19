@@ -6,51 +6,56 @@ publish_to: 'none'
 version: 0.0.1
 
 environment:
-  sdk: ">=3.8.0 <4.0.0"
-  
+  sdk: ^3.9.0
+  flutter: ">=3.35.0"
+
 dependencies:
-  auto_route: ^10.2.3
+  auto_route: ^11.1.0
   bloc_concurrency: ^0.3.0
   cached_network_image: ^3.4.1
   collection: ^1.19.1
-  connectivity_plus: ^7.0.0
+  connectivity_plus: ^7.1.1
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
   flutter_launcher_icons: ^0.14.4
   flutter_localizations:
     sdk: flutter
-  flutter_svg: ^2.2.3
+  flutter_svg: ^2.3.0
   flutter_web_plugins:
     sdk: flutter
   freezed_annotation: ^3.1.0
-  get_it: ^9.1.0
-  google_fonts: ^6.3.2
+  get_it: ^9.2.1
+  google_fonts: ^8.1.0
   hive_flutter: ^1.1.0
-  hydrated_bloc: ^10.1.1
-  image_picker: ^1.2.1
-  injectable: ^2.6.0
+  hydrated_bloc: ^11.0.0
+  image_picker: ^1.2.2
+  injectable: ^3.0.0
   intl: ^0.20.2
-  json_annotation: ^4.9.0
+  json_annotation: ^4.12.0
   logging: ^1.3.0
-  package_info_plus: ^9.0.0
+  package_info_plus: ^10.1.0
   path_provider: ^2.1.5
   permission_handler: ^12.0.1
-  uuid: ^4.5.2
+  uuid: ^4.5.3
 
 dev_dependencies:
-  analyzer: ^8.0.0
-  arb_utils: ^0.1.0+1
-  auto_route_generator: ^10.2.6
+  arb_utils: ^0.11.0
+  auto_route_generator: ^10.5.0
   auto_translator: ^2.3.5
-  build_runner: ^2.10.4
-  flutter_gen_runner: ^5.12.0
+  build_runner: ^2.15.0
+  flutter_gen_runner: ^5.14.1
   flutter_lints: ^6.0.0
   flutter_test:
     sdk: flutter
-  freezed: ^3.2.3
-  injectable_generator: ^2.9.1
-  json_serializable: ^6.11.2
+  freezed: ^3.2.5
+  injectable_generator: ^3.0.2
+  json_serializable: ^6.14.0
+
+# arb_utils -> dart_console pins win32 <6.0.0 but package_info_plus 10.x needs win32 ^6.0.1.
+# Override resolves the version conflict; arb_utils is only used as a dev-time CLI tool.
+dependency_overrides:
+  win32: ^6.0.1
 
 
 flutter_gen:
