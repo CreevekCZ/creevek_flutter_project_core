@@ -18,28 +18,38 @@ This brick generates a Flutter project with the following features:
 - **💾 Data** - Hive and Hydrated BLoC for local storage and Freezed for immutable data classes
 - **📦 Asset Management** - Flutter Gen for type-safe asset access
 
+## 🧰 Requirements
+
+| Tool | Minimum Version |
+|------|-----------------|
+| Flutter SDK | 3.35.0 |
+| Dart SDK | 3.9.0 |
+| Mason CLI | 0.1.3 |
+
+> Validated against Flutter 3.41.4 / Dart 3.11.1.
+
 ## 📦 Included Packages
 
 ### Core Dependencies
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `auto_route` | ^10.2.3 | Type-safe routing and navigation |
+| `auto_route` | ^11.1.0 | Type-safe routing and navigation |
 | `bloc_concurrency` | ^0.3.0 | BLoC concurrency utilities |
 | `collection` | ^1.19.1 | Collection utilities |
 | `flutter_bloc` | ^9.1.1 | Flutter widgets for BLoC |
-| `hydrated_bloc` | ^10.1.1 | Persistent state management |
-| `get_it` | ^9.1.0 | Dependency injection service locator |
-| `injectable` | ^2.6.0 | Dependency injection annotations |
+| `hydrated_bloc` | ^11.0.0 | Persistent state management |
+| `get_it` | ^9.2.1 | Dependency injection service locator |
+| `injectable` | ^3.0.0 | Dependency injection annotations |
 | `freezed_annotation` | ^3.1.0 | Immutable data classes |
-| `json_annotation` | ^4.9.0 | JSON serialization annotations |
+| `json_annotation` | ^4.12.0 | JSON serialization annotations |
 
 ### UI & Design
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `google_fonts` | ^6.3.2 | Google Fonts integration |
-| `flutter_svg` | ^2.2.3 | SVG rendering support |
+| `google_fonts` | ^8.1.0 | Google Fonts integration |
+| `flutter_svg` | ^2.3.0 | SVG rendering support |
 | `cached_network_image` | ^3.4.1 | Network image caching |
 | `flutter_launcher_icons` | ^0.14.4 | App icon generation |
 | `flutter_localizations` | SDK | Flutter localization support |
@@ -56,11 +66,11 @@ This brick generates a Flutter project with the following features:
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `package_info_plus` | ^9.0.0 | App package information |
-| `connectivity_plus` | ^7.0.0 | Network connectivity monitoring |
-| `image_picker` | ^1.2.1 | Image selection from gallery/camera |
+| `package_info_plus` | ^10.1.0 | App package information |
+| `connectivity_plus` | ^7.1.1 | Network connectivity monitoring |
+| `image_picker` | ^1.2.2 | Image selection from gallery/camera |
 | `permission_handler` | ^12.0.1 | Permission management |
-| `uuid` | ^4.5.2 | Unique identifier generation |
+| `uuid` | ^4.5.3 | Unique identifier generation |
 | `logging` | ^1.3.0 | Structured logging |
 | `intl` | ^0.20.2 | Internationalization |
 
@@ -68,23 +78,29 @@ This brick generates a Flutter project with the following features:
 
 | Package | Version | Purpose |
 |---------|---------|---------|
-| `auto_route_generator` | ^10.2.6 | Auto route code generation |
-| `build_runner` | ^2.10.4 | Code generation runner |
-| `freezed` | ^3.2.3 | Freezed code generation |
-| `injectable_generator` | ^2.9.1 | Injectable code generation |
-| `json_serializable` | ^6.11.2 | JSON serialization code generation |
-| `flutter_gen_runner` | ^5.12.0 | Asset code generation |
-| `arb_utils` | ^0.1.0+1 | ARB file utilities |
+| `auto_route_generator` | ^10.5.0 | Auto route code generation |
+| `build_runner` | ^2.15.0 | Code generation runner |
+| `freezed` | ^3.2.5 | Freezed code generation |
+| `injectable_generator` | ^3.0.2 | Injectable code generation |
+| `json_serializable` | ^6.14.0 | JSON serialization code generation |
+| `flutter_gen_runner` | ^5.14.1 | Asset code generation |
+| `arb_utils` | ^0.11.0 | ARB file utilities |
 | `auto_translator` | ^2.3.5 | Automatic translation |
 | `flutter_lints` | ^6.0.0 | Flutter linting rules |
-| `analyzer` | ^8.0.0 | Dart analyzer |
+
+### Dependency Overrides
+
+The brick pins `win32: ^6.0.1` so the latest `package_info_plus` (which depends on
+`win32` 6.x) can coexist with `arb_utils` (whose transitive `dart_console`
+dependency caps `win32` below 6.0.0). The override only affects the dev-time
+`arb_utils` CLI tooling and has no impact on app runtime.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Flutter SDK (latest stable version)
-- Dart SDK
+- Flutter SDK >= 3.35.0
+- Dart SDK >= 3.9.0
 - Mason CLI
 
 ### Installation
@@ -138,7 +154,7 @@ You can set up the project in two ways, depending on whether you already have Ma
 
 2. **Generate code**:
    ```bash
-   flutter packages pub run build_runner build --delete-conflicting-outputs
+   dart run build_runner build --delete-conflicting-outputs
    ```
 
 3. **Run the app**:
