@@ -25,13 +25,13 @@ linter:
     - avoid_implementing_value_types
     - avoid_init_to_null
     - avoid_js_rounded_ints
-    - avoid_null_checks_in_equality_operators
     - avoid_print
     - avoid_private_typedef_functions
     - avoid_relative_lib_imports
     - avoid_renaming_method_parameters
     - avoid_return_types_on_setters
     - avoid_returning_null_for_void
+    - avoid_single_cascade_in_expression_statements
     - avoid_returning_this
     - avoid_setters_without_getters
     - avoid_shadowing_type_parameters
@@ -46,26 +46,37 @@ linter:
     - cancel_subscriptions
     - close_sinks
     - comment_references
+    - constant_identifier_names
     - control_flow_in_finally
     - curly_braces_in_flow_control_structures
+    - dangling_library_doc_comments
+    - depend_on_referenced_packages
     - directives_ordering
     - empty_catches
     - empty_constructor_bodies
     - empty_statements
+    - exhaustive_cases
     - file_names
     - hash_and_equals
+    - implicit_call_tearoffs
     - implementation_imports
     - collection_methods_unrelated_type
+    - invalid_runtime_check_with_js_interop_types
     - join_return_with_assignment
     - leading_newlines_in_multiline_strings
+    - library_annotations
     - library_names
     - library_prefixes
+    - library_private_types_in_public_api
     - literal_only_boolean_expressions
     - missing_whitespace_between_adjacent_strings
     - no_adjacent_strings_in_list
     - no_duplicate_case_values
+    - no_leading_underscores_for_library_prefixes
+    - no_leading_underscores_for_local_identifiers
     - no_logic_in_create_state
     - no_runtimeType_toString
+    - no_wildcard_variable_uses
     - non_constant_identifier_names
     - null_closures
     - one_member_abstracts
@@ -112,16 +123,24 @@ linter:
     - sort_child_properties_last
     - sort_pub_dependencies
     - sort_unnamed_constructors_first
+    - secure_pubspec_urls
+    - strict_top_level_inference
     - test_types_in_equals
     - throw_in_finally
     - type_init_formals
+    - type_literal_in_constant_pattern
+    - unintended_html_in_doc_comment
     - unnecessary_await_in_return
     - unnecessary_brace_in_string_interps
     - unnecessary_const
+    - unnecessary_constructor_name
     - unnecessary_getters_setters
+    - unnecessary_late
+    - unnecessary_library_name
     - unnecessary_new
     - unnecessary_null_aware_assignments
     - unnecessary_null_in_if_null_operators
+    - unnecessary_nullable_for_final_variable_declarations
     - unnecessary_overrides
     - unnecessary_parenthesis
     - unnecessary_raw_strings
@@ -129,6 +148,8 @@ linter:
     - unnecessary_string_escapes
     - unnecessary_string_interpolations
     - unnecessary_this
+    - unnecessary_to_list_in_spreads
+    - unnecessary_underscores
     - unrelated_type_equality_checks
     - use_full_hex_values_for_flutter_colors
     - use_function_type_syntax_for_parameters
@@ -137,6 +158,8 @@ linter:
     - use_rethrow_when_possible
     - use_setters_to_change_properties
     - use_string_buffers
+    - use_string_in_part_of_directives
+    - use_super_parameters
     - use_to_and_as_if_applicable
     - valid_regexps
     - void_checks

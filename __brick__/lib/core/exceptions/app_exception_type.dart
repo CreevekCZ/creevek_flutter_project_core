@@ -1,4 +1,4 @@
-import 'package:{{packageName}}/l10n/app_localizations.dart';
+import '../../l10n/app_localizations.dart';
 
 enum AppExceptionType {
   unknownError,

@@ -5,7 +5,8 @@ class ResponsiveSizeService extends WidgetsBindingObserver {
   ResponsiveSizeService._internal();
 
   // Singleton instance
-  static final ResponsiveSizeService instance = ResponsiveSizeService._internal();
+  static final ResponsiveSizeService instance =
+      ResponsiveSizeService._internal();
 
   Size _screenSize = Size.zero;
   final _listeners = <VoidCallback>[];
@@ -48,7 +49,9 @@ class ResponsiveSizeService extends WidgetsBindingObserver {
 
   Size get screenSize {
     if (!_isInitialized) {
-      throw StateError('ResponsiveSizeService must be initialized with init() before use');
+      throw StateError(
+        'ResponsiveSizeService must be initialized with init() before use',
+      );
     }
     return _screenSize;
   }

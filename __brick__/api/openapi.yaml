@@ -1,0 +1,31 @@
+openapi: 3.1.0
+info:
+  title: "{{packageName}} API"
+  version: 0.0.1
+servers:
+  - url: https://api.example.com
+    description: Development API
+paths:
+  /api/v1/health:
+    get:
+      tags:
+        - system
+      operationId: getHealth
+      summary: Check API availability
+      responses:
+        "200":
+          description: API status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          example: ok

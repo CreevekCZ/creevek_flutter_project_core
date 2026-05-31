@@ -1,15 +1,15 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'package:{{packageName}}/core/environment/app_environment.dart';
-import 'package:{{packageName}}/core/extensions/package_info.dart';
-import 'package:{{packageName}}/core/services/responsive_size_service.dart';
-import 'package:{{packageName}}/di.dart';
+import '../di.dart';
+import 'environment/app_environment.dart';
+import 'extensions/package_info.dart';
+import 'services/responsive_size_service.dart';
 
 class AppSetup {
   AppSetup._();
@@ -67,5 +67,6 @@ abstract class FeatureFlags {
   static bool devTools = kDebugMode;
   // static bool devTools = false;
 
-  static bool get isDev => sl<PackageInfo>().appEnvironment == AppEnvironment.dev;
+  static bool get isDev =>
+      sl<PackageInfo>().appEnvironment == AppEnvironment.dev;
 }

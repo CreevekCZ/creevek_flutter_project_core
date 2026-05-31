@@ -4,172 +4,162 @@
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=Flat-square&logo=Flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=Flat-square&logo=dart&logoColor=white)
 
-A Flutter project template brick that creates an application with a standard architecture, state management, routing, dependency injection, and localization features.
+A Mason brick for a production-ready Flutter app foundation aligned with Flutter `3.44.0` and Dart `3.12.0`.
 
-## 🚀 Features
+## Features
 
-This brick generates a Flutter project with the following features:
+- **Flutter 3.44.0 baseline** - SDK constraints and package versions are aligned with Dart `3.12.0`.
+- **State management** - `flutter_bloc`, `hydrated_bloc`, and `bloc_concurrency`.
+- **Persistence** - Hive CE via `hive_ce` and `hive_ce_flutter`; the old `hive_flutter` package is no longer used.
+- **Routing** - AutoRoute with generated route definitions.
+- **Dependency injection** - GetIt and Injectable modules.
+- **Networking** - Dio module, Retrofit client foundation, and Dio exception mapping to app exception types.
+- **OpenAPI/Swagger generation** - `openapi_retrofit_generator` config and starter `api/openapi.yaml` for generated Dio/Retrofit clients.
+- **Localization** - Flutter gen-l10n with ARB files.
+- **Linting** - `flutter_lints` plus the current official Dart recommended rules, `directives_ordering`, and a post-generation import sorter.
+- **Testing foundation** - `bloc_test`, `mocktail`, and Alchemist golden test setup with starter Bloc, golden, and network mapper tests.
+- **Asset tooling** - Flutter Gen for type-safe generated assets and `SvgGenImageExtension` helpers.
 
-- **🔄 State Management** - BLoC pattern with `flutter_bloc` and `hydrated_bloc` for persistence
-- **🛣️ Routing** - Auto route for type-safe navigation
-- **💉 Dependency Injection** - Injectable with GetIt for service locator pattern
-- **🌍 Localization** - Multi-language support with ARB files
-- **📱 Useful helper widgets** - UI helpers such as `MultiValueListenableBuilder`, `Unfocuser` and more
-- **💾 Data** - Hive and Hydrated BLoC for local storage and Freezed for immutable data classes
-- **📦 Asset Management** - Flutter Gen for type-safe asset access
+## Requirements
 
-## 🧰 Requirements
+| Tool | Version |
+|------|---------|
+| Flutter SDK | `3.44.0` or newer |
+| Dart SDK | `3.12.0` or newer |
+| Mason CLI | `0.1.3` or newer |
 
-| Tool | Minimum Version |
-|------|-----------------|
-| Flutter SDK | 3.35.0 |
-| Dart SDK | 3.9.0 |
-| Mason CLI | 0.1.3 |
+Flutter `3.44.0` ships with Dart `3.12.0`.
 
-> Validated against Flutter 3.41.4 / Dart 3.11.1.
+## Generated Project
 
-## 📦 Included Packages
+The brick creates a Flutter app with:
 
-### Core Dependencies
+- `lib/core/app.dart` and `lib/core/app_setup.dart` for app bootstrap.
+- `lib/core/network/` for Dio, Retrofit, and network exception handling.
+- `lib/core/extensions/svg_gen_image_extension.dart` for generated SVG color helpers.
+- `api/openapi.yaml` and `openapi_generator.yaml` for OpenAPI/Swagger client generation.
+- `lib/features/home/` and `lib/features/language_settings/` as starter feature examples.
+- `test/` helpers and examples for Bloc tests and Alchemist golden tests.
+- A Mason `post_gen` hook that sorts Dart imports after `packageName` interpolation so `directives_ordering` works for generated apps.
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `auto_route` | ^11.1.0 | Type-safe routing and navigation |
-| `bloc_concurrency` | ^0.3.0 | BLoC concurrency utilities |
-| `collection` | ^1.19.1 | Collection utilities |
-| `flutter_bloc` | ^9.1.1 | Flutter widgets for BLoC |
-| `hydrated_bloc` | ^11.0.0 | Persistent state management |
-| `get_it` | ^9.2.1 | Dependency injection service locator |
-| `injectable` | ^3.0.0 | Dependency injection annotations |
-| `freezed_annotation` | ^3.1.0 | Immutable data classes |
-| `json_annotation` | ^4.12.0 | JSON serialization annotations |
+## Package Highlights
 
-### UI & Design
+### Runtime
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `google_fonts` | ^8.1.0 | Google Fonts integration |
-| `flutter_svg` | ^2.3.0 | SVG rendering support |
-| `cached_network_image` | ^3.4.1 | Network image caching |
-| `flutter_launcher_icons` | ^0.14.4 | App icon generation |
-| `flutter_localizations` | SDK | Flutter localization support |
-| `flutter_web_plugins` | SDK | Flutter web plugin support |
+| Package | Version |
+|---------|---------|
+| `auto_route` | `^11.1.0` |
+| `dio` | `^5.9.2` |
+| `flutter_bloc` | `^9.1.1` |
+| `get_it` | `^9.2.1` |
+| `hive_ce` | `^2.19.3` |
+| `hive_ce_flutter` | `^2.3.4` |
+| `hydrated_bloc` | `^11.0.0` |
+| `injectable` | `^3.0.0` |
+| `retrofit` | `^4.9.2` |
 
-### Data & Storage
+### Code Generation And Testing
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `hive_flutter` | ^1.1.0 | Local database storage |
-| `path_provider` | ^2.1.5 | File system access |
+| Package | Version |
+|---------|---------|
+| `alchemist` | `^0.14.0` |
+| `auto_route_generator` | `^10.5.0` |
+| `bloc_test` | `^10.0.0` |
+| `build_runner` | `^2.15.0` |
+| `flutter_gen_runner` | `^5.14.1` |
+| `hive_ce_generator` | `^1.11.1` |
+| `injectable_generator` | `^3.0.2` |
+| `json_serializable` | `^6.14.0` |
+| `mocktail` | `^1.0.5` |
+| `openapi_retrofit_generator` | `^2.0.4` |
+| `retrofit_generator` | `^10.2.6` |
 
-### Utilities & Services
+> The package named `swagger_generator` is intentionally not included because its latest published version still declares a Dart SDK constraint below Dart 3. The brick uses `openapi_retrofit_generator`, which supports Swagger/OpenAPI specs and generates Retrofit/Dio clients for current Flutter.
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `package_info_plus` | ^10.1.0 | App package information |
-| `connectivity_plus` | ^7.1.1 | Network connectivity monitoring |
-| `image_picker` | ^1.2.2 | Image selection from gallery/camera |
-| `permission_handler` | ^12.0.1 | Permission management |
-| `uuid` | ^4.5.3 | Unique identifier generation |
-| `logging` | ^1.3.0 | Structured logging |
-| `intl` | ^0.20.2 | Internationalization |
+## Getting Started
 
-### Development Dependencies
+Install Mason if needed:
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `auto_route_generator` | ^10.5.0 | Auto route code generation |
-| `build_runner` | ^2.15.0 | Code generation runner |
-| `freezed` | ^3.2.5 | Freezed code generation |
-| `injectable_generator` | ^3.0.2 | Injectable code generation |
-| `json_serializable` | ^6.14.0 | JSON serialization code generation |
-| `flutter_gen_runner` | ^5.14.1 | Asset code generation |
-| `arb_utils` | ^0.11.0 | ARB file utilities |
-| `auto_translator` | ^2.3.5 | Automatic translation |
-| `flutter_lints` | ^6.0.0 | Flutter linting rules |
+```bash
+dart pub global activate mason_cli
+```
 
-### Dependency Overrides
+For a new app, create the Flutter platform shell first:
 
-The brick pins `win32: ^6.0.1` so the latest `package_info_plus` (which depends on
-`win32` 6.x) can coexist with `arb_utils` (whose transitive `dart_console`
-dependency caps `win32` below 6.0.0). The override only affects the dev-time
-`arb_utils` CLI tooling and has no impact on app runtime.
+```bash
+flutter create my_app --project-name my_app
+cd my_app
+```
 
-## 🚀 Getting Started
+Initialize Mason and add the brick:
 
-### Prerequisites
+```bash
+mason init
+mason add creevek_flutter_project_core --git-url https://github.com/CreevekCZ/creevek_flutter_project_core
+```
 
-- Flutter SDK >= 3.35.0
-- Dart SDK >= 3.9.0
-- Mason CLI
+Generate the app foundation over the Flutter shell:
 
-### Installation
+```bash
+mason make creevek_flutter_project_core --on-conflict overwrite
+```
 
-You can set up the project in two ways, depending on whether you already have Mason initialized in your project.
+Install dependencies:
 
----
+```bash
+flutter pub get
+```
 
-#### **A. If you have NOT set up Mason in your project yet**
+Generate OpenAPI and Dart code:
 
-1. **Install Mason CLI** (if not already installed):
-   ```bash
-   dart pub global activate mason_cli
-   ```
+```bash
+dart run openapi_retrofit_generator
+dart run build_runner build
+```
 
-2. **Initialize Mason in your project** (creates a `mason.yaml` file):
-   ```bash
-   mason init
-   ```
+Run tests:
 
-3. **Add the brick from GitHub**:
-   ```bash
-   mason add creevek_flutter_project_core --git-url https://github.com/CreevekCZ/creevek_flutter_project_core
-   ```
+```bash
+flutter test
+flutter test --update-goldens
+```
 
-4. **Generate a new Flutter project**:
-   ```bash
-   mason make creevek_flutter_project_core
-   ```
+Run the app:
 
----
+```bash
+flutter run
+```
 
-#### **B. If you ALREADY have Mason set up in your project**
+If you generate the brick into an empty directory instead of a Flutter-created
+project, `flutter test`, `flutter analyze`, and code generation still work after
+`flutter pub get`, but `flutter run` needs platform folders from `flutter create`.
 
-1. **Add the brick from GitHub**:
-   ```bash
-   mason add creevek_flutter_project_core --git-url https://github.com/CreevekCZ/creevek_flutter_project_core
-   ```
+## Networking
 
-2. **Generate a new Flutter project**:
-   ```bash
-   mason make creevek_flutter_project_core
-   ```
+The generated project includes a ready Injectable `NetworkModule` that registers:
 
-### Post-Generation Setup
+- `Dio` with base URL, JSON headers, timeouts, and debug logging.
+- `AppApiClient`, a starter Retrofit client.
 
-1. **Install dependencies**:
-   ```bash
-   flutter pub get
-   ```
+For Swagger/OpenAPI-driven clients, edit `api/openapi.yaml`, then run:
 
-2. **Generate code**:
-   ```bash
-   dart run build_runner build --delete-conflicting-outputs
-   ```
+```bash
+dart run openapi_retrofit_generator
+dart run build_runner build
+```
 
-3. **Run the app**:
-   ```bash
-   flutter run
-   ```
+Generated clients are written to `lib/api`.
 
-## 🤝 Contributing
+## Testing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test the brick with a new project
-5. Submit a pull request
+The generated app includes:
 
-## 📄 License
+- `test/helpers/hydrated_bloc_storage.dart` for HydratedBloc storage stubbing with Mocktail.
+- `test/flutter_test_config.dart` for global Alchemist config.
+- A starter `LanguageCubit` Bloc test.
+- A starter CI-only `HomeScreen` Alchemist golden test with an initial baseline.
+- A starter Dio exception mapper unit test.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

@@ -53,3 +53,8 @@ app.*.map.json
 **/*.gr.dart
 **/*.graphql.dart
 lib/l10n/app_localizations*.dart
+
+# Platform-specific golden outputs
+**/goldens/linux/
+**/goldens/macos/
+**/goldens/windows/

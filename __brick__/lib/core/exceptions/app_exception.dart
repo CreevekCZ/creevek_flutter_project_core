@@ -1,4 +1,4 @@
-import 'package:{{packageName}}/core/exceptions/app_exception_type.dart';
+import 'app_exception_type.dart';
 
 class AppException<T extends AppExceptionType> implements Exception {
   const AppException({

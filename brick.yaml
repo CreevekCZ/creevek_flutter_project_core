@@ -1,7 +1,7 @@
 name: creevek_flutter_project_core
-description: Flutter app sandbox with Bloc, AutoRoute, GetIt, Hive, HydratedBloc, and more.
+description: Flutter app foundation with Bloc, AutoRoute, GetIt, Hive CE, HydratedBloc, Dio, Retrofit, OpenAPI generation, and testing.
 
-version: 0.0.1+1
+version: 0.1.0+1
 
 environment:
   mason: ^0.1.1
@@ -12,6 +12,3 @@ vars:
     description: name value in pubspec.yaml
     default: counter_app
     prompt: What is your package name?
-
-    
-

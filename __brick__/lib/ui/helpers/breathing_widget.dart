@@ -21,7 +21,8 @@ class BreathingWidget extends StatefulWidget {
   BreathingWidgetState createState() => BreathingWidgetState();
 }
 
-class BreathingWidgetState extends State<BreathingWidget> with SingleTickerProviderStateMixin {
+class BreathingWidgetState extends State<BreathingWidget>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
 
@@ -32,13 +33,16 @@ class BreathingWidgetState extends State<BreathingWidget> with SingleTickerProvi
       vsync: this,
       duration: widget.duration,
     )..repeat(reverse: true);
-    _scaleAnimation = Tween<double>(
-      begin: widget.minScale,
-      end: widget.maxScale,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: widget.curve,
-    ));
+    _scaleAnimation =
+        Tween<double>(
+          begin: widget.minScale,
+          end: widget.maxScale,
+        ).animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve: widget.curve,
+          ),
+        );
   }
 
   @override

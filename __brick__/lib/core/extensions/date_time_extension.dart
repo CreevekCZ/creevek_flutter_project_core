@@ -12,9 +12,9 @@ extension DateTimeX on DateTime {
   }
 
   DateTime get toLocalTime => DateTime.fromMillisecondsSinceEpoch(
-        millisecondsSinceEpoch,
-        isUtc: true,
-      ).toLocal();
+    millisecondsSinceEpoch,
+    isUtc: true,
+  ).toLocal();
 
   String get onlyDate => DateFormat('dd/MM/yyyy').format(toLocalTime);
 

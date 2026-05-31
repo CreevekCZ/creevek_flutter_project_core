@@ -27,15 +27,15 @@ class AnimatedVisibility extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AnimatedSize(
-        duration: duration,
-        curve: curve,
-        child: SizedBox(
-          height: visible ? height : invisibleHeight,
-          width: visible ? width : invisibleWidth,
-          child: Visibility(
-            visible: visible,
-            child: child,
-          ),
-        ),
-      );
+    duration: duration,
+    curve: curve,
+    child: SizedBox(
+      height: visible ? height : invisibleHeight,
+      width: visible ? width : invisibleWidth,
+      child: Visibility(
+        visible: visible,
+        child: child,
+      ),
+    ),
+  );
 }

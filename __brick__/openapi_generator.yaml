@@ -1,0 +1,9 @@
+openapi_generator:
+  schema_path: api/openapi.yaml
+  output_directory: lib/api
+  json_serializer: json_serializable
+  root_client: true
+  root_client_name: ApiClient
+  client_postfix: Client
+  export_file: true
+  unknown_enum_value: true

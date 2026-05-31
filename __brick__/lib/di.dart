@@ -4,9 +4,8 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import 'package:{{packageName}}/features/language_settings/language_cubit/language_cubit.dart';
-
 import 'di.config.dart';
+import 'features/language_settings/language_cubit/language_cubit.dart';
 
 final sl = GetIt.instance;
 

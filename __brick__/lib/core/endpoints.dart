@@ -12,4 +12,6 @@ class EndpointsV1 {
   String _path(String endpoint) => '$_basePath$endpoint';
 
   String get auth => _path('/auth');
+
+  String get health => _path('/health');
 }

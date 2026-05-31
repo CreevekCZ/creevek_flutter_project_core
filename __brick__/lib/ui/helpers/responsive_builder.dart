@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import 'package:{{packageName}}/core/services/responsive_size_service.dart';
+import '../../core/services/responsive_size_service.dart';
 
 class ResponsiveBuilder extends StatefulWidget {
   const ResponsiveBuilder({

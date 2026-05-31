@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import 'package:{{packageName}}/core/environment/app_environment.dart';
+import 'app_environment.dart';
 
 @singleton
 class AppEnvironmentProvider {

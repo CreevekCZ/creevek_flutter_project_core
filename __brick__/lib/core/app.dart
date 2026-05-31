@@ -6,11 +6,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logging/logging.dart';
 
-import 'package:{{packageName}}/core/extensions/build_context.dart';
-import 'package:{{packageName}}/di.dart';
-import 'package:{{packageName}}/features/language_settings/language_cubit/language_cubit.dart';
-import 'package:{{packageName}}/l10n/app_localizations.dart';
-import 'package:{{packageName}}/routes.dart';
+import '../di.dart';
+import '../features/language_settings/language_cubit/language_cubit.dart';
+import '../l10n/app_localizations.dart';
+import '../routes.dart';
+import 'extensions/build_context.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -54,9 +54,15 @@ class _AppState extends State<App> {
               GlobalCupertinoLocalizations.delegate,
             ],
             showPerformanceOverlay: false,
-            routerConfig: _router.config(navigatorObservers: () => [sl<AppRouteObserver>()]),
-            theme: ThemeData.from(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
-            darkTheme: ThemeData.from(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue)),
+            routerConfig: _router.config(
+              navigatorObservers: () => [sl<AppRouteObserver>()],
+            ),
+            theme: ThemeData.from(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+            ),
+            darkTheme: ThemeData.from(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+            ),
             builder: (context, child) => child!,
           );
         },

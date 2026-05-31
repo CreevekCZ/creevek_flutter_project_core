@@ -2,10 +2,12 @@ import 'dart:ui';
 
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import 'package:{{packageName}}/l10n/app_localizations.dart';
+import '../../../l10n/app_localizations.dart';
 
 class LanguageCubit extends HydratedCubit<Locale?> {
-  LanguageCubit({required Locale systemLocale}) : _systemLocale = systemLocale, super(null) {
+  LanguageCubit({required Locale systemLocale})
+    : _systemLocale = systemLocale,
+      super(null) {
     final currentState = state;
 
     if (currentState == null) {
@@ -14,6 +16,9 @@ class LanguageCubit extends HydratedCubit<Locale?> {
   }
 
   late final Locale _systemLocale;
+
+  @override
+  String get storagePrefix => 'LanguageCubit';
 
   Locale get currentLocale => state ?? _systemLocale;
 
@@ -24,15 +29,15 @@ class LanguageCubit extends HydratedCubit<Locale?> {
   @override
   Locale? fromJson(Map<String, dynamic>? json) {
     if (json == null) {
-      emit(_systemLocale);
       return null;
     }
 
-    try {
-      return Locale(json['languageCode'] as String);
-    } catch (_) {
+    final languageCode = json['languageCode'];
+    if (languageCode is! String || languageCode.isEmpty) {
       return null;
     }
+
+    return Locale(languageCode);
   }
 
   @override
