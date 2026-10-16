@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
 
-class TabletConstraintBox extends StatelessWidget {
-  const TabletConstraintBox({
-    required this.children,
-    this.crossAxisAlignment = CrossAxisAlignment.start,
-    this.mainAxisAlignment = MainAxisAlignment.start,
-    this.spacing = 16,
-    super.key,
-  });
-
-  final List<Widget> children;
-  final double spacing;
-
-  final CrossAxisAlignment crossAxisAlignment;
-  final MainAxisAlignment mainAxisAlignment;
-
+class const TabletConstraintBox({
+  required final List<Widget> children,
+  final CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
+  final MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,
+  final double spacing = 16,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(

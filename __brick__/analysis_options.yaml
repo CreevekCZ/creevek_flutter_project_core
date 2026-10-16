@@ -5,6 +5,23 @@ formatter:
 
 linter:
   rules:
+    # Dart 3.13 constructors and current async/Flutter conventions.
+    - empty_container_bodies
+    - initialize_in_field_declaration
+    - unnecessary_const_in_enum_constructor
+    - unnecessary_primary_constructor_body
+    - unnecessary_type_name_in_constructor
+    - use_declaring_parameters
+    - parameter_assignments
+    - async_return_with_no_await
+    - discarded_futures
+    - unnecessary_async
+    - avoid_slow_async_io
+    - matching_super_parameters
+    - use_colored_box
+    - use_decorated_box
+    - sized_box_shrink_expand
+    - use_named_constants
     - use_null_aware_elements
     - sized_box_for_whitespace
     - always_put_required_named_parameters_first
@@ -26,7 +43,6 @@ linter:
     - avoid_init_to_null
     - avoid_js_rounded_ints
     - avoid_print
-    - avoid_private_typedef_functions
     - avoid_relative_lib_imports
     - avoid_renaming_method_parameters
     - avoid_return_types_on_setters
@@ -75,11 +91,10 @@ linter:
     - no_leading_underscores_for_library_prefixes
     - no_leading_underscores_for_local_identifiers
     - no_logic_in_create_state
-    - no_runtimeType_toString
+    - no_runtimetype_tostring
     - no_wildcard_variable_uses
     - non_constant_identifier_names
     - null_closures
-    - one_member_abstracts
     - only_throw_errors
     - overridden_fields
     - package_names
@@ -130,7 +145,6 @@ linter:
     - type_init_formals
     - type_literal_in_constant_pattern
     - unintended_html_in_doc_comment
-    - unnecessary_await_in_return
     - unnecessary_brace_in_string_interps
     - unnecessary_const
     - unnecessary_constructor_name
@@ -166,10 +180,17 @@ linter:
 
 analyzer:
   exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - linux/**
+    - macos/**
+    - windows/**
     - "**/*.mocks.dart"
     - "**/*.g.dart"
     - "lib/gen/**"
-    - "lib/di.cuid_config.dart"
+    - "**/*.config.dart"
+    - "**/*.gr.dart"
     - "lib/firebase_options.dart"
     - "lib/l10n/app_localizations*.dart"
     - "**/*.freezed.dart"
@@ -178,42 +199,8 @@ analyzer:
   language:
     strict-casts: true
     strict-raw-types: true
+    strict-inference: true
 
   errors:
-    missing_return: error
-    missing_required_param: error
-    always_use_package_imports: ignore
     deprecated_member_use: error
     deprecated_member_use_from_same_package: info
-
-dart_code_metrics:
-  rules:
-    avoid-banned-imports:
-      severity: error
-      entries:
-        - paths: [".*/models/.+\\.dart"]
-          deny: [".*/(data|services|widgets|screens|ui|l10n)/.*"]
-          message: "Do not import data|services|widgets|screens|ui|l10n from models"
-
-        - paths: [".*/data/.+\\.dart"]
-          deny: [".*/(services|widgets|screens|ui|l10n)/.*"]
-          message: "Do not import services|widgets|screens|ui|l10n from data"
-
-        - paths: [".*/services/.+\\.dart"]
-          deny: [".*/(widgets|screens|ui|l10n)/.*"]
-          message: "Do not import widgets|screens|ui|l10n from services"
-
-        - paths: [".*/widgets/.+\\.dart"]
-          deny: [".*/screens/.*"]
-          message: "Do not import screens from widgets"
-
-        - paths: [".*/ui/.+\\.dart"]
-          deny: [".*/features/.*"]
-          message: "Do not import features from ui"
-        - paths: [ ".*/lib/.+\\.dart" ]
-          deny: [ "[^./]+/src/.*" ]
-          message: "Do not import from src directory outside of the module"
-
-  rules-exclude:
-    - "**/*.gr.dart"
-    - "**/generated_plugin_registrant.dart"

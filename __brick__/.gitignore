@@ -58,3 +58,9 @@ lib/l10n/app_localizations*.dart
 **/goldens/linux/
 **/goldens/macos/
 **/goldens/windows/
+
+# Local SDK, Mason cache, and test outputs
+.fvm/
+.mason/
+coverage/
+**/failures/

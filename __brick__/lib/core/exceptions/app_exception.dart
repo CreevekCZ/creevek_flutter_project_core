@@ -1,18 +1,11 @@
 import 'app_exception_type.dart';
 
-class AppException<T extends AppExceptionType> implements Exception {
-  const AppException({
-    required this.type,
-    this.message,
-    this.exception,
-    this.stackTrace,
-  });
-
-  final T type;
-  final String? message;
-  final Exception? exception;
-  final StackTrace? stackTrace;
-
+class const AppException<T extends AppExceptionType>({
+  required final T type,
+  final String? message,
+  final Exception? exception,
+  final StackTrace? stackTrace,
+}) implements Exception {
   @override
   String toString() {
     final buffer = StringBuffer();

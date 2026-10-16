@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,16 +12,13 @@ import '../di.dart';
 import '../features/language_settings/language_cubit/language_cubit.dart';
 import '../l10n/app_localizations.dart';
 import '../routes.dart';
-import 'extensions/build_context.dart';
 
-class App extends StatefulWidget {
-  const App({super.key});
-
+class const App({super.key}) extends StatefulWidget {
   @override
   State<App> createState() => _AppState();
 }
 
-class _AppState extends State<App> {
+class _AppState extends State<App> with WidgetsBindingObserver {
   final _router = AppRouter();
 
   late final LanguageCubit _languageCubit;
@@ -28,19 +27,32 @@ class _AppState extends State<App> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setDefaultOrientation(context);
-    });
-
+    WidgetsBinding.instance.addObserver(this);
     _languageCubit = sl<LanguageCubit>();
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    unawaited(setDefaultOrientation(context));
+  }
+
+  @override
+  void didChangeMetrics() {
+    unawaited(setDefaultOrientation(context));
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _router.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => _languageCubit),
-      ],
+    return BlocProvider.value(
+      value: _languageCubit,
       child: BlocBuilder<LanguageCubit, Locale?>(
         builder: (context, locale) {
           return MaterialApp.router(
@@ -61,9 +73,11 @@ class _AppState extends State<App> {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
             ),
             darkTheme: ThemeData.from(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: Colors.blue,
+                brightness: .dark,
+              ),
             ),
-            builder: (context, child) => child!,
           );
         },
       ),
@@ -83,9 +97,7 @@ class ConsoleColors {
 }
 
 @injectable
-class AppRouteObserver extends AutoRouterObserver {
-  AppRouteObserver();
-
+class AppRouteObserver() extends AutoRouterObserver {
   final Logger logger = Logger('AutoRoute');
 
   @override
@@ -97,13 +109,13 @@ class AppRouteObserver extends AutoRouterObserver {
 }
 
 Future<void> setDefaultOrientation(BuildContext context) async {
-  if (context.isPhone) {
-    await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  } else {
-    await SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
-    ]);
+  // A letterboxed MediaQuery size is not the physical display's logical size.
+  final display = View.maybeOf(context)?.display;
+  if (display == null) {
+    return;
   }
+
+  await SystemChrome.setPreferredOrientations(
+    display.size.width / display.devicePixelRatio < 600 ? [.portraitUp] : [],
+  );
 }

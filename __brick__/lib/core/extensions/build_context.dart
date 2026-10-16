@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
 
 extension BuildContextX on BuildContext {
-  bool get isPhone =>
-      (isPortrait
-          ? MediaQuery.of(this).size.width
-          : MediaQuery.of(this).size.height) <
-      600;
+  Size get screenSize => MediaQuery.sizeOf(this);
 
-  bool get isSmallPhone => MediaQuery.of(this).size.width < 360;
+  bool get isPhone => screenSize.shortestSide < 600;
 
-  bool get isTablet =>
-      (isPortrait
-          ? MediaQuery.of(this).size.width
-          : MediaQuery.of(this).size.height) >=
-      600;
+  bool get isSmallPhone => screenSize.width < 360;
 
-  bool get isDesktop => MediaQuery.of(this).size.width >= 1200;
+  bool get isTablet => screenSize.shortestSide >= 600;
 
-  bool get isLandscape =>
-      MediaQuery.of(this).orientation == Orientation.landscape;
+  bool get isDesktop => screenSize.width >= 1200;
 
-  bool get isPortrait =>
-      MediaQuery.of(this).orientation == Orientation.portrait;
+  bool get isLandscape => MediaQuery.orientationOf(this) == .landscape;
+
+  bool get isPortrait => MediaQuery.orientationOf(this) == .portrait;
+
+  /// Percentages of this widget's view, with automatic rebuilds on resize.
+  double rh(num percent) => screenSize.height * percent / 100;
+
+  double rw(num percent) => screenSize.width * percent / 100;
 }

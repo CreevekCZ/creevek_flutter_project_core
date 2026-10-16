@@ -10,13 +10,14 @@ import 'features/language_settings/language_cubit/language_cubit.dart';
 final sl = GetIt.instance;
 
 @InjectableInit(preferRelativeImports: true)
-Future<void> configureDependencies() async => sl.init();
+Future<void> configureDependencies() => sl.init();
 
 @module
 abstract class AppModule {
   @preResolve
   Future<PackageInfo> getPackageInfo() => PackageInfo.fromPlatform();
 
+  @Singleton(dispose: disposeLanguageCubit)
   @preResolve
   Future<LanguageCubit> getLanguageCubit() async {
     final systemLocale = PlatformDispatcher.instance.locale;
@@ -24,3 +25,5 @@ abstract class AppModule {
     return LanguageCubit(systemLocale: systemLocale);
   }
 }
+
+Future<void> disposeLanguageCubit(LanguageCubit cubit) => cubit.close();

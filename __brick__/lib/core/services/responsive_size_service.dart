@@ -1,9 +1,8 @@
+import 'dart:ui' show FlutterView;
+
 import 'package:flutter/widgets.dart';
 
-class ResponsiveSizeService extends WidgetsBindingObserver {
-  // Private constructor without auto-initialization
-  ResponsiveSizeService._internal();
-
+class ResponsiveSizeService._internal() extends WidgetsBindingObserver {
   // Singleton instance
   static final ResponsiveSizeService instance =
       ResponsiveSizeService._internal();
@@ -11,20 +10,26 @@ class ResponsiveSizeService extends WidgetsBindingObserver {
   Size _screenSize = Size.zero;
   final _listeners = <VoidCallback>[];
   bool _isInitialized = false;
+  FlutterView? _view;
 
   /// Initialize the service and start listening to size changes
-  void init() {
+  void init({FlutterView? view}) {
     if (_isInitialized) {
       return;
     }
 
+    _view = view ?? WidgetsBinding.instance.platformDispatcher.implicitView;
     _updateScreenSize();
     WidgetsBinding.instance.addObserver(this);
     _isInitialized = true;
   }
 
   void _updateScreenSize() {
-    final window = WidgetsBinding.instance.platformDispatcher.views.first;
+    _view ??= WidgetsBinding.instance.platformDispatcher.implicitView;
+    final window = _view;
+    if (window == null) {
+      return;
+    }
     final newSize = window.physicalSize / window.devicePixelRatio;
 
     if (_screenSize != newSize) {
@@ -34,7 +39,7 @@ class ResponsiveSizeService extends WidgetsBindingObserver {
   }
 
   void _notifyListeners() {
-    for (final listener in _listeners) {
+    for (final listener in List<VoidCallback>.of(_listeners)) {
       listener();
     }
   }
@@ -69,6 +74,8 @@ class ResponsiveSizeService extends WidgetsBindingObserver {
 
     WidgetsBinding.instance.removeObserver(this);
     _listeners.clear();
+    _view = null;
+    _screenSize = Size.zero;
     _isInitialized = false;
   }
 }

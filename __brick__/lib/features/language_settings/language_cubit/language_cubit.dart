@@ -4,18 +4,15 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../../l10n/app_localizations.dart';
 
-class LanguageCubit extends HydratedCubit<Locale?> {
-  LanguageCubit({required Locale systemLocale})
-    : _systemLocale = systemLocale,
-      super(null) {
+class LanguageCubit({required final Locale _systemLocale})
+    extends HydratedCubit<Locale?> {
+  this : super(null) {
     final currentState = state;
 
     if (currentState == null) {
-      emit(systemLocale);
+      emit(_systemLocale);
     }
   }
-
-  late final Locale _systemLocale;
 
   @override
   String get storagePrefix => 'LanguageCubit';
@@ -28,16 +25,16 @@ class LanguageCubit extends HydratedCubit<Locale?> {
 
   @override
   Locale? fromJson(Map<String, dynamic>? json) {
-    if (json == null) {
-      return null;
+    if (json case {'languageCode': final String languageCode}
+        when languageCode.isNotEmpty) {
+      return Locale.fromSubtags(
+        languageCode: languageCode,
+        scriptCode: _optionalSubtag(json['scriptCode']),
+        countryCode: _optionalSubtag(json['countryCode']),
+      );
     }
 
-    final languageCode = json['languageCode'];
-    if (languageCode is! String || languageCode.isEmpty) {
-      return null;
-    }
-
-    return Locale(languageCode);
+    return null;
   }
 
   @override
@@ -46,12 +43,17 @@ class LanguageCubit extends HydratedCubit<Locale?> {
       return null;
     }
 
-    try {
-      return {'languageCode': state.languageCode};
-    } catch (_) {
-      return null;
-    }
+    return {
+      'languageCode': state.languageCode,
+      'scriptCode': ?state.scriptCode,
+      'countryCode': ?state.countryCode,
+    };
   }
+
+  String? _optionalSubtag(Object? value) => switch (value) {
+    final String code when code.isNotEmpty => code,
+    _ => null,
+  };
 
   void save() {
     final currentState = state;

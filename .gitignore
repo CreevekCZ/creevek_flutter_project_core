@@ -1,1 +1,6 @@
 .DS_Store
+
+.fvm/
+hooks/.dart_tool/
+hooks/build/
+hooks/pubspec.lock

@@ -13,7 +13,7 @@ void run(HookContext context) {
 int _sortDartImports() {
   var sortedFiles = 0;
 
-  for (final directoryName in const ['lib', 'test', 'integration_test']) {
+  for (final directoryName in const ['lib', 'test', 'integration_test', 'tool']) {
     final directory = Directory(directoryName);
 
     if (!directory.existsSync()) {

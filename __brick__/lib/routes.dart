@@ -1,11 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 
-import 'routes.gr.dart';
+import 'features/home/screens/home_screen.dart';
 
-@AutoRouterConfig(replaceInRouteName: 'Screen,Route')
-class AppRouter extends RootStackRouter {
-  AppRouter();
-
+class AppRouter() extends RootStackRouter {
   @override
   RouteType get defaultRouteType => const RouteType.material();
 
@@ -14,9 +11,11 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-    AutoRoute(
-      page: HomeRoute.page,
+    NamedRouteDef(
+      name: 'HomeRoute',
+      path: '/',
       initial: true,
+      builder: (context, data) => const HomeScreen(),
     ),
   ];
 }

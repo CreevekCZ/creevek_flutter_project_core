@@ -1,7 +1,7 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockHydratedStorage extends Mock implements Storage {}
+class MockHydratedStorage extends Mock implements Storage;
 
 Storage setupHydratedBlocStorage() {
   final storage = MockHydratedStorage();

@@ -1,30 +1,16 @@
 import 'package:flutter/widgets.dart';
 
-class AnimatedVisibility extends StatelessWidget {
-  const AnimatedVisibility({
-    required this.child,
-    required this.visible,
-    this.duration = const Duration(milliseconds: 300),
-    this.curve = Curves.easeInOut,
-    this.height,
-    this.width,
-    this.invisibleHeight = 0,
-    this.invisibleWidth = 0,
-    super.key,
-  });
-
-  final Duration duration;
-  final Widget child;
-  final bool visible;
-
-  final Curve curve;
-
-  final double? height;
-  final double? width;
-
-  final double invisibleHeight;
-  final double invisibleWidth;
-
+class const AnimatedVisibility({
+  required final Widget child,
+  required final bool visible,
+  final Duration duration = const Duration(milliseconds: 300),
+  final Curve curve = Curves.easeInOut,
+  final double? height,
+  final double? width,
+  final double invisibleHeight = 0,
+  final double invisibleWidth = 0,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) => AnimatedSize(
     duration: duration,

@@ -4,11 +4,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'app_environment.dart';
 
 @singleton
-class AppEnvironmentProvider {
-  AppEnvironmentProvider(this._packageInfo);
-
-  final PackageInfo _packageInfo;
-
+class AppEnvironmentProvider(final PackageInfo _packageInfo) {
   AppEnvironment get environment {
     const flavorNameFromEnv = String.fromEnvironment('FLAVOR');
 

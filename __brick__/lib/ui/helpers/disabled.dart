@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Disabled extends StatelessWidget {
-  const Disabled({
-    required this.child,
-    required this.disabled,
-    super.key,
-  });
-
-  final Widget child;
-  final bool disabled;
-
+class const Disabled({
+  required final Widget child,
+  required final bool disabled,
+  super.key,
+}) extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Opacity(

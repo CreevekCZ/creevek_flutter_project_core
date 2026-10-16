@@ -11,10 +11,8 @@ import 'environment/app_environment.dart';
 import 'extensions/package_info.dart';
 import 'services/responsive_size_service.dart';
 
-class AppSetup {
-  AppSetup._();
-
-  static AppSetup instance = AppSetup._();
+class AppSetup._() {
+  static final AppSetup instance = AppSetup._();
 
   AppEnvironment get environment => sl<PackageInfo>().appEnvironment;
 
@@ -38,7 +36,9 @@ class AppSetup {
     HydratedBloc.storage = await HydratedStorage.build(
       storageDirectory: kIsWeb
           ? HydratedStorageDirectory.web
-          : HydratedStorageDirectory((await getTemporaryDirectory()).path),
+          : HydratedStorageDirectory(
+              (await getApplicationSupportDirectory()).path,
+            ),
     );
   }
 

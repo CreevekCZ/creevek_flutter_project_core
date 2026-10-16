@@ -1,20 +1,15 @@
-enum AppEnvironment {
-  dev,
-  prod;
+enum AppEnvironment(final String value) {
+  dev('dev'),
+  prod('prod');
 
-  factory AppEnvironment.fromString(String value) => switch (value) {
-    'dev' => AppEnvironment.dev,
-    'prod' => AppEnvironment.prod,
-    _ => AppEnvironment.dev,
-  };
-
-  String get value => switch (this) {
-    AppEnvironment.dev => 'dev',
-    AppEnvironment.prod => 'prod',
+  factory fromString(String value) => switch (value) {
+    'dev' => .dev,
+    'prod' => .prod,
+    _ => .dev,
   };
 
   String get baseUrl => switch (this) {
-    AppEnvironment.dev => '',
-    AppEnvironment.prod => '',
+    .dev => '',
+    .prod => '',
   };
 }

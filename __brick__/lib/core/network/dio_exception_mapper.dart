@@ -17,7 +17,8 @@ extension DioExceptionMapper on DioException {
     return switch (type) {
       DioExceptionType.connectionTimeout ||
       DioExceptionType.sendTimeout ||
-      DioExceptionType.receiveTimeout => AppExceptionType.connectionTimeout,
+      DioExceptionType.receiveTimeout ||
+      DioExceptionType.transformTimeout => AppExceptionType.connectionTimeout,
       DioExceptionType.badCertificate => AppExceptionType.badCertificate,
       DioExceptionType.badResponse => _badResponseExceptionType,
       DioExceptionType.cancel => AppExceptionType.requestCancelled,

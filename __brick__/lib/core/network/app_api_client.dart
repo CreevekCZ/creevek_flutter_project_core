@@ -6,7 +6,7 @@ part 'app_api_client.g.dart';
 @RestApi()
 // ignore: one_member_abstracts
 abstract class AppApiClient {
-  factory AppApiClient(
+  factory(
     Dio dio, {
     String? baseUrl,
   }) = _AppApiClient;

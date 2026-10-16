@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BreathingWidget extends StatefulWidget {
-  const BreathingWidget({
-    required this.child,
-    this.duration = const Duration(seconds: 2),
-    this.minScale = 0.8,
-    this.maxScale = 1.2,
-    this.curve = Curves.easeInOut,
-    super.key,
-  });
-
-  final Widget child;
-  final Duration duration;
-  final double minScale;
-  final double maxScale;
-
-  final Curve curve;
-
+class const BreathingWidget({
+  required final Widget child,
+  final Duration duration = const Duration(seconds: 2),
+  final double minScale = 0.8,
+  final double maxScale = 1.2,
+  final Curve curve = Curves.easeInOut,
+  super.key,
+}) extends StatefulWidget {
   @override
   BreathingWidgetState createState() => BreathingWidgetState();
 }
